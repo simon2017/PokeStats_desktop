@@ -42,9 +42,9 @@ public class MainUi extends JPanel implements ActionListener {
 
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.setResizable(false);
+		frame.setResizable(true);
 		frame.setTitle("PokeStats - Desktop");
-		frame.setPreferredSize(new Dimension(500, 620));
+		frame.setPreferredSize(new Dimension(500, 800));
 
 		JPanel setPanel = new JPanel(new BorderLayout());
 		setPanel.setOpaque(false);

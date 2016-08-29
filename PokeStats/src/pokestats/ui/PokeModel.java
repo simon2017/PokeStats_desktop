@@ -52,7 +52,7 @@ public class PokeModel extends AbstractTableModel {
 		case 0:
 			return list.get(rowIndex).getNombre();
 		case 1:
-			return round(list.get(rowIndex).getPerfecto(),2);
+			return round(list.get(rowIndex).getPerfecto(), 2);
 		case 2:
 			return list.get(rowIndex).getCp();
 		case 3:
@@ -65,6 +65,15 @@ public class PokeModel extends AbstractTableModel {
 			return list.get(rowIndex).getNivel();
 		}
 		return null;
+	}
+
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		if (columnIndex == 1)
+			return Double.class;
+		else
+
+			return super.getColumnClass(columnIndex);
 	}
 
 	public double round(double value, int places) {

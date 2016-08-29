@@ -28,17 +28,17 @@ public class PokemonListPanel extends JPanel {
 		super(new BorderLayout());
 		this.setBorder(UtilUI.createBorder("Lista de Pokemon", TitledBorder.CENTER));
 		this.setOpaque(false);
-		
 
 		model = new PokeModel();
 		JTable table = new JTable(model);
+		table.setDefaultRenderer(Double.class, new PokeCellRenderer());
 		TableRowSorter<PokeModel> sorter = new TableRowSorter<PokeModel>(model);
 		table.setRowSorter(sorter);
 		table.setOpaque(false);
-		
+
 		JScrollPane pane = new JScrollPane(table);
 		pane.setOpaque(false);
-		
+
 		pane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		this.add(pane, BorderLayout.CENTER);
 	}
@@ -48,10 +48,9 @@ public class PokemonListPanel extends JPanel {
 		List<PokeDetail> cleaned = new ArrayList<PokeDetail>();
 
 		for (Pokemon pokemon : pokemons) {
-			String name=pokemon.getNickname();
-			if(name==null || name.isEmpty())
-			name=PokeNames.getDisplayName(pokemon.getPokemonId().getNumber(), Locale.ENGLISH);
-
+			String name = pokemon.getNickname();
+			if (name == null || name.isEmpty())
+				name = PokeNames.getDisplayName(pokemon.getPokemonId().getNumber(), Locale.ENGLISH);
 
 			PokeDetail pokeDetail = new PokeDetail();
 			pokeDetail.setNombre(name);
